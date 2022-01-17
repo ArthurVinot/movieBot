@@ -1,10 +1,10 @@
 'use strict';
 
-if(process.env.NODE_ENV === 'production ') {
+if(process.env['NODE_ENV'] === 'production ') {
   module.exports = {
     FB: {
-      pageAccessToken: process.env.pageAccessToken ,
-      VerifyToken: process.env.VerifyToken
+      pageAccessToken: process.env['pageAccessToken'] ,
+      VerifyToken: process.env['VerifyToken']
     }
   }
 } else {
