@@ -1,7 +1,7 @@
 'use strict'
 
 class FBeamer{
-    constructor (pageAccessToken , VerifyToken){
+    constructor ({pageAccessToken , VerifyToken}){
 
         try {
             this.pageAccessToken = pageAccessToken;
@@ -20,6 +20,7 @@ class FBeamer{
 function registerHook(req, res) 
 {
     const params = req.query;
+    console.log(params);
     const mode = params['hub.mode'],
     token = params['hub.verify_token'],
     challenge = params['hub.challenge'];
