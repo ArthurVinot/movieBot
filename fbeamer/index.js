@@ -2,7 +2,6 @@
 
 class FBeamer{
     constructor ({pageAccessToken , VerifyToken}){
-
         try {
             this.pageAccessToken = pageAccessToken;
         } catch (error) {
@@ -23,7 +22,7 @@ class FBeamer{
   challenge = params['hub.challenge'];
   
   try {
-      if (mode === 'subscribe' && token === VerifyToken){
+      if (mode === 'subscribe' && token === this.VerifyToken){
           console.log("The webhook is registered")
           return res.send(challenge);
       } else {
