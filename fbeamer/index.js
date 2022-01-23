@@ -1,8 +1,7 @@
 'use strict'
 
 class FBeamer{
-    constructor (pageAccessToken , VerifyToken){
-
+    constructor ({pageAccessToken , VerifyToken}){
         try {
             this.pageAccessToken = pageAccessToken;
         } catch (error) {
@@ -15,26 +14,25 @@ class FBeamer{
             console.error(error);
         }
     }
-}
-
-function registerHook(req, res) 
-{
-    const params = req.query;
-    const mode = params['hub.mode'],
-    token = params['hub.verify_token'],
-    challenge = params['hub.challenge'];
-    
-    try {
-        if (mode === 'subscribe' && token === 'verifytoken'){
-            console.log("The webhook is registered")
-            return res.send(challenge);
-        } else {
-            console.log("Could not register webhook");
-            return res.sendStatus(200);
+  registerHook(req, res) {
+  const params = req.query;
+  console.log(params);
+  const mode = params['hub.mode'],
+  token = params['hub.verify_token'],
+  challenge = params['hub.challenge'];
+  
+  try {
+      if (mode === 'subscribe' && token === this.VerifyToken){
+          console.log("The webhook is registered")
+          return res.send(challenge);
+      } else {
+          console.log("Could not register webhook");
+          return res.sendStatus(200);
         }
-    } catch(e) {
-        console.log(e);
+  } catch(e) {
+      console.log(e);
     }
+  }
 }
 
 module.exports = FBeamer;
