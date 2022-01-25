@@ -6,4 +6,5 @@ const f = new fbeamer(config.FB);
 const server = express();
 const PORT = process.env.PORT || 3000;
 server.get('/', (req, res) => f.registerHook(req, res));
-server.listen(PORT, () => console.log('The bot server is running on port ${PORT}'));
+server.listen(PORT, () => console.log(`The bot server is running on port ${PORT}`));
+//server.post('/', (req, res, next) => f.incoming(req, res));
